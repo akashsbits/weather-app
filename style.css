@@ -1,109 +1,116 @@
-*, *::after, *::before {
-  box-sizing: border-box;
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background-color: hsl(210, 100%, 90%);
-  color: hsl(210, 100%, 20%);
-  font-family: sans-serif;
+    margin: 0;
+    background-color: hsl(210, 100%, 90%);
+    color: hsl(210, 100%, 20%);
+    font-family: sans-serif;
 }
 
 .header {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .header-left {
-  display: flex;
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-right: 2px solid hsl(210, 100%, 20%);
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-right: 2px solid hsl(210, 100%, 20%);
 }
 
 .weather-icon {
-  height: 60px;
-  width: 60px;
-  object-fit: contain;
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
 }
 
 .weather-icon.large {
-  height: 120px;
-  width: 120px;
+    height: 120px;
+    width: 120px;
 }
 
 .header-current-temp {
-  font-size: 2.5rem;
-  margin-left: 0.75rem;
+    font-size: 2.5rem;
+    margin-left: 0.75rem;
 }
 
 .header-right {
-  display: grid;
-  width: 50%;
-  justify-content: space-around;
-  gap: 1.0rem;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(2, auto);
+    display: grid;
+    width: 50%;
+    justify-content: space-around;
+    gap: 1rem;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
 }
 
 .info-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .label {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.0rem;
-  color: hsl(210, 100%, 30%)
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    color: hsl(210, 100%, 30%);
 }
 
 .value-sub-info {
-  font-weight: lighter;
-  font-size: 1.0rem;
+    font-weight: lighter;
+    font-size: 1rem;
 }
 
 .day-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 120px);
-  gap: 1.25rem;
-  justify-content: center;
-  padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 120px);
+    gap: 1.25rem;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .day-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid hsl(210, 100%, 20%);
-  border-radius: 0.25rem;
-  padding: 0.50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid hsl(210, 100%, 20%);
+    border-radius: 0.25rem;
+    padding: 0.5rem;
 }
 
 .day-card-day {
-  font-size: 1.0rem;
-  color: hsl(210, 100%, 30%);
-  margin-top: 0.75rem;
+    font-size: 1rem;
+    color: hsl(210, 100%, 30%);
+    margin-top: 0.75rem;
 }
 
 .hour-section {
-  width: 100%;
-  text-align: center;
-  border-spacing: 0;
+    width: 100%;
+    text-align: center;
+    border-spacing: 0;
 }
 
 .hour-row {
-  background-color: hsl(210, 55%, 85%);
+    background-color: hsl(210, 55%, 85%);
 }
 
 .hour-row:nth-child(2n) {
-  background-color: hsl(210, 55%, 80%);
+    background-color: hsl(210, 55%, 80%);
 }
 
 .hour-row > td {
-  padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.blurred {
+    filter: blur(3px);
+    overflow: hidden;
 }
