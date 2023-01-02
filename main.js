@@ -1,49 +1,7 @@
+/* eslint no-alert: 0 */
 import './style.css';
-import { getWeatherData } from './weather';
+import getWeatherData from './weather';
 import { setValue, getIconUrl } from './helpers';
-
-// HTML Geolocation API
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
-function onSuccess({ coords }) {
-    /* Intl.DateTimeFormat().resolvedOptions().timeZone returns a timezone (Asia/Calcutta)
-computed during initialization of Intl.DateTimeFormat object */
-    getWeatherData(
-        coords.latitude,
-        coords.longitude,
-        Intl.DateTimeFormat().resolvedOptions().timeZone
-    )
-        .then(renderWeather)
-        .catch((err) => {
-            console.error(err);
-            alert('Unable to get weather forcast, try after some time.');
-        });
-}
-
-function onError(err) {
-    switch (err.code) {
-        case err.PERMISSION_DENIED:
-            alert('Please allow to use your location and refresh the page.');
-            break;
-        case err.POSITION_UNAVAILABLE:
-            alert('Location information is unavailable.');
-            break;
-        case err.TIMEOUT:
-            alert('The request to get user location timed out.');
-            break;
-        case err.UNKNOWN_ERROR:
-            alert('An unknown error occurred.');
-            break;
-    }
-}
-
-function renderWeather({ current, daily, hourly }) {
-    renderCurrentWeather(current);
-    renderDailyWeather(daily);
-    renderHourlyWeather(hourly);
-
-    document.body.classList.remove('blurred');
-}
 
 const currentIcon = document.querySelector('[data-current-icon]');
 
@@ -102,3 +60,50 @@ function renderHourlyWeather(hourly) {
         hourlySection.append(element);
     });
 }
+
+function renderWeather({ current, daily, hourly }) {
+    renderCurrentWeather(current);
+    renderDailyWeather(daily);
+    renderHourlyWeather(hourly);
+
+    document.body.classList.remove('blurred');
+}
+
+function onSuccess({ coords }) {
+    /* Intl.DateTimeFormat().resolvedOptions().timeZone returns a timezone (Asia/Calcutta)
+computed during initialization of Intl.DateTimeFormat object */
+    getWeatherData(
+        coords.latitude,
+        coords.longitude,
+        Intl.DateTimeFormat().resolvedOptions().timeZone
+    )
+        .then(renderWeather)
+        .catch((err) => {
+            console.error(err);
+            alert('Unable to get weather forcast, try after some time.');
+        });
+}
+
+function onError(err) {
+    switch (err.code) {
+        case err.PERMISSION_DENIED:
+            alert('Please allow to use your location and refresh the page.');
+            break;
+        case err.POSITION_UNAVAILABLE:
+            alert('Location information is unavailable.');
+            break;
+        case err.TIMEOUT:
+            alert('The request to get user location timed out.');
+            break;
+        case err.UNKNOWN_ERROR:
+            alert('An unknown error occurred.');
+            break;
+        default:
+            alert(
+                'An error has been occurred while getting your location, please refresh the page.'
+            );
+    }
+}
+
+// HTML Geolocation API
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
